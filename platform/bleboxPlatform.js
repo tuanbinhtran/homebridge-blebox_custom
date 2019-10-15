@@ -66,6 +66,8 @@ BleBoxPlatform.prototype.addIpsFromInterface = function (netInterface) {
                     this.ipList.push(currentIpString);
                 }
             }
+            
+            log(`Checking ip-range from ${firstPossibleIpNumber} to ${lastPossibleIpNumber} ...`);
         }
     }
 
@@ -140,7 +142,7 @@ BleBoxPlatform.prototype.sendSearchRequest = function (index) {
         var ipAddress = this.ipList[index];
         if (ipAddress) {
             var self = this;
-            console.log("Checking ip: %s", ipAddress);
+            // console.log("Checking ip: %s", ipAddress);
             communication.send(bleboxCommands.getDeviceState, ipAddress, {
                 onSuccess: function (deviceInfo) {
                     if (deviceInfo) {
@@ -172,7 +174,9 @@ BleBoxPlatform.prototype.checkIfSearchIsFinishedAndScheduleNext = function (inde
         this.log("Searching blebox devices finished!");
         if (this.startNextScanDelayInMin) { //if defined and different than 0
             var startNextScanDelayInMs = this.startNextScanDelayInMin * 60 * 1000;
-            setTimeout(this.startSearching.bind(this), startNextScanDelayInMs);
+            setTimeout(this.
+                       
+                       .bind(this), startNextScanDelayInMs);
         }
     }
 };
